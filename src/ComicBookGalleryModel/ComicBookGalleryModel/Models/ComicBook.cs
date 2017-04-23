@@ -9,6 +9,11 @@ namespace ComicBookGalleryModel.Models
 {
     public class ComicBook
     {
+        public ComicBook()
+        {
+            Artists = new List<Artist>();
+        }
+
         public int Id { get; set; }
         public int SeriesId { get; set; }//foreignKey
         //[ForeignKey("SeriesID")] dit is alleen nodig als je je niet aan de confention houdt of bij bestaande DB's
@@ -18,6 +23,8 @@ namespace ComicBookGalleryModel.Models
         public decimal? AverageRating { get; set; }
 
         public Series Series { get; set; } // one to many relation
+
+        public ICollection<Artist> Artists { get; set; } //many to many relation
 
         //je mag read only props toevoegen deze worden niet meegenomen in je dat model
         public string DisplayText
