@@ -11,7 +11,7 @@ namespace ComicBookGalleryModel.Models
     {
         public ComicBook()
         {
-            Artists = new List<Artist>();
+            Artists = new List<ComicBookArtist>();
         }
 
         public int Id { get; set; }
@@ -24,7 +24,7 @@ namespace ComicBookGalleryModel.Models
 
         public Series Series { get; set; } // one to many relation
 
-        public ICollection<Artist> Artists { get; set; } //many to many relation
+        public ICollection<ComicBookArtist> Artists { get; set; } //many to many relation met gebruik van de nieuw bridge tabel
 
         //je mag read only props toevoegen deze worden niet meegenomen in je dat model
         public string DisplayText
@@ -34,6 +34,15 @@ namespace ComicBookGalleryModel.Models
                 return $"{Series?.Title} #{IssueNumber}";
                 //Series? return null als leeg is want anders krijg je een null exeption terug als veld leeg is
             }
+        }
+
+        public void AddArtist(Artist artist, Role role)
+        {
+            Artists.Add(new ComicBookArtist()
+            {
+                Artist = artist,
+                Role=role
+            });
         }
 
     }
