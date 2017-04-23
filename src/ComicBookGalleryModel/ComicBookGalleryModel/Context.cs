@@ -15,12 +15,15 @@ namespace ComicBookGalleryModel
         {
             //drop database als het model veranderd
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
-            
+
             //EF gebruikt create datebase if not exists by default dus eigenlijk niet nodig
             //Database.SetInitializer(new CreateDatabaseIfNotExists<Context>());
 
             //drop database bij elke herstart
-            Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
+
+            Database.SetInitializer(new DatabaseInitializer());
+
         }
         public DbSet<ComicBook> ComicBooks { get; set; }
 
