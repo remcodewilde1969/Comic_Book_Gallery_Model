@@ -40,6 +40,8 @@ namespace ComicBookGalleryModel
 
                 var comicBooks = comicBooksQuery
                     .Include(cb => cb.Series)
+                    .Include(cb => cb.Artists.Select(a => a.Artist))
+                    .Include(cb => cb.Artists.Select(a => a.Role))
                     .OrderBy(cb => cb.Series.Title)
                     .ThenBy(cb => cb.IssueNumber)
                     .ToList();
@@ -49,8 +51,12 @@ namespace ComicBookGalleryModel
                 foreach (var book in comicBooks)
                     {
                         Console.WriteLine(book.DisplayText);
+                        var artistRolesDisplayText = string.Join(", ", book.Artists
+                         .Select(a => $"{a.Artist.Name} - {a.Role.Name}").ToList());
+                        Console.WriteLine(artistRolesDisplayText);
+                        Console.WriteLine();
                     }
-
+                Console.WriteLine();
                 Console.WriteLine("# of comic books: {0}", comicBooks.Count);
 
                 //var comicBooks = context.ComicBooks
