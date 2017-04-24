@@ -31,9 +31,17 @@ namespace ComicBookGalleryModel
                 //    cb.Series.Title=="The Amazing Spider-Man")
                 //    .ToList(); geeft alle issue number 1 of "The Amazing Spinder-Man"
 
+                //var comicBooks = comicBooksQuery
+                //    .Include(cb => cb.Series)
+                //    .Where(cb => cb.Series.Title.Contains("man"))
+                //    .OrderBy(cb => cb.Series.Title)
+                //    .ThenBy(cb => cb.IssueNumber)
+                //    .ToList();
+
                 var comicBooks = comicBooksQuery
                     .Include(cb => cb.Series)
-                    .Where(cb => cb.Series.Title.Contains("man"))
+                    .OrderBy(cb => cb.Series.Title)
+                    .ThenBy(cb => cb.IssueNumber)
                     .ToList();
 
 
