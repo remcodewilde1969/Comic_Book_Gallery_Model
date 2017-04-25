@@ -50,6 +50,12 @@ namespace ComicBookGalleryModel
 
                 foreach (var book in comicBooks)
                     {
+                        if (book.Series == null)
+                        {
+                        context.Entry(book)
+                        .Reference(cd => cd.Series)
+                        .Load();
+                        }
                         Console.WriteLine(book.DisplayText);
                         var artistRolesDisplayText = string.Join(", ", book.Artists
                          .Select(a => $"{a.Artist.Name} - {a.Role.Name}").ToList());

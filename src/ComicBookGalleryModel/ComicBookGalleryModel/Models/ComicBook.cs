@@ -22,7 +22,7 @@ namespace ComicBookGalleryModel.Models
         public DateTime PublishedOn { get; set; }
         public decimal? AverageRating { get; set; }
 
-        public virtual Series Series { get; set; } // one to many relation
+        public Series Series { get; set; } // one to many relation
 
         public virtual ICollection<ComicBookArtist> Artists { get; set; } //many to many relation met gebruik van de nieuw bridge tabel
 
