@@ -22,9 +22,9 @@ namespace ComicBookGalleryModel.Models
         public DateTime PublishedOn { get; set; }
         public decimal? AverageRating { get; set; }
 
-        public Series Series { get; set; } // one to many relation
+        public virtual Series Series { get; set; } // one to many relation
 
-        public ICollection<ComicBookArtist> Artists { get; set; } //many to many relation met gebruik van de nieuw bridge tabel
+        public virtual ICollection<ComicBookArtist> Artists { get; set; } //many to many relation met gebruik van de nieuw bridge tabel
 
         //je mag read only props toevoegen deze worden niet meegenomen in je dat model
         public string DisplayText

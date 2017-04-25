@@ -15,9 +15,9 @@ namespace ComicBookGalleryModel.Models
 
         //navigate props
 
-        public ComicBook Comicbook { get; set; }
-        public Artist Artist { get; set; }
-        public Role Role { get; set; }
+        public virtual ComicBook Comicbook { get; set; }
+        public virtual Artist Artist { get; set; }
+        public virtual Role Role { get; set; }
 
     }
 }

@@ -39,9 +39,9 @@ namespace ComicBookGalleryModel
                 //    .ToList();
 
                 var comicBooks = comicBooksQuery
-                    .Include(cb => cb.Series)
-                    .Include(cb => cb.Artists.Select(a => a.Artist))
-                    .Include(cb => cb.Artists.Select(a => a.Role))
+                    //.Include(cb => cb.Series)
+                    //.Include(cb => cb.Artists.Select(a => a.Artist))
+                    //.Include(cb => cb.Artists.Select(a => a.Role))
                     .OrderBy(cb => cb.Series.Title)
                     .ThenBy(cb => cb.IssueNumber)
                     .ToList();
